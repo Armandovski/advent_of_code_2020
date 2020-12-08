@@ -54,15 +54,12 @@ if __name__ == '__main__':
 	#print(max(seatID))
 
 	# Part 2 - Find my seat
-	ocurrences = 0
 	for seat in seatID:
 		if (seat + 1) not in seatID:
-			if (seat+2) in seatID:
+			if (seat + 2) in seatID:
 				my_seatID = (seat + 1)
-				ocurrences += 1
 
 	print(my_seatID)
-	print(ocurrences)
 
 
 

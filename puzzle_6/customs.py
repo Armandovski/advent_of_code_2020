@@ -1,5 +1,7 @@
 def get_unique_sum(group_answers_list):
-	# Part 1 - Get unique sum
+	'''
+		Part 1 - Get sum of all unique answers for each group
+	'''
 	# Get all answers for each group
 	group_all_answers = [answers.replace('\n', '') for answers in group_answers_list]
 	group_answer_sets = [set(answers) for answers in group_all_answers]
@@ -10,7 +12,9 @@ def get_unique_sum(group_answers_list):
 	return sum_unique
 
 def get_common_sum(answers_list):
-	# Part 2 - Get common sum
+	'''
+		Part 2 - Get sum of all answers common to everyone in a group
+	'''
 	total_count = 0
 	for group in answers_list:
 		answers = ''.join(group)
@@ -29,8 +33,9 @@ if __name__ == '__main__':
 	# Separate answers for each group
 	answers_list = [answers.split('\n') for answers in group_answers_list]
 
-	print(get_unique_sum(group_answers_list))
-	print(get_common_sum(answers_list))
+	# Print answers
+	print("Part 1 - Unique Answers:", get_unique_sum(group_answers_list))
+	print("Part 2 - Common Answers:", get_common_sum(answers_list))
 
 
 
