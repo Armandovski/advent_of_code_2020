@@ -7,7 +7,7 @@ def get_layer_out(rules_dict, color):
 			valid_keys = list(set(valid_keys))
 
 	for key in valid_keys:
-		valid_keys += get_layer(rules_dict, key)
+		valid_keys += get_layer_out(rules_dict, key)
 		valid_keys = list(set(valid_keys))
 
 	return valid_keys
