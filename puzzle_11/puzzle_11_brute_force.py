@@ -4,12 +4,13 @@ ROW = 0
 COL = 1
 
 def find_adjacent(grid, coord):
-	g_len = len(grid[0])
+	g_lenx = len(grid)
+	g_leny = len(grid[0])
 	adj = [[-1, -1], [1, 1], [-1, 1], [1, -1], [-1, 0], [1, 0], [0, -1], [0, 1]]
 	for a in adj:
 		a[ROW] += coord[ROW]
 		a[COL] += coord[COL]
-	adjacent = [tuple(a) for a in adj if 0 <= a[ROW] < g_len and 0 <= a[COL] < g_len]
+	adjacent = [tuple(a) for a in adj if 0 <= a[ROW] < g_lenx and 0 <= a[COL] < g_leny]
 	adjacent = [adj for adj in adjacent if grid[adj] != '.']
 
 	return adjacent
