@@ -51,13 +51,13 @@ def ft_part2(data):
 			wypt[0] -= mov
 		if direction == 'R':
 			buffer = deepcopy(wypt)
-			for i in range(0, int(mov/90)):
+			for _ in range(0, int(mov/90)):
 				wypt[0] = buffer[1]
 				wypt[1] = -buffer[0]
 				buffer = deepcopy(wypt)
 		if direction == 'L':
 			buffer = deepcopy(wypt)
-			for i in range(0, int(mov/90)):
+			for _ in range(0, int(mov/90)):
 				wypt[0] = -buffer[1]
 				wypt[1] = buffer[0]
 				buffer = deepcopy(wypt)
