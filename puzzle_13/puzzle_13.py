@@ -1,6 +1,10 @@
 import numpy as np
 
 def ft_part1(buses, arrival_time):
+	'''
+	This function finds the bus which will arrive first after time given in
+	first line of data input
+	'''
 	best_arrival = {}
 	for bus in buses:
 		first_instance = np.ceil(arrival_time/bus)*bus
@@ -18,30 +22,31 @@ def in_sequence(buses):
 
 
 def ft_part2(buses_all):
-	position = []
+	'''
+	This function finds the time t in which all buses will arrive at t + n where
+	n is the value of their index in the order of the data input
+	'''
+	offset = []
 	period = []
 	for i, bus in enumerate(buses_all):
 		if bus != 'x':
-			position.append(-i)
+			offset.append(-i)
 			period.append(int(bus))
-	while not in_sequence(position):
-		print(position)
-		min_idx = np.argmin(position)
-		max_idx = np.argmax(position)
-		print(position[max_idx], position[min_idx], period[min_idx])
-		orbit = np.ceil((position[max_idx] - position[min_idx]) / period[min_idx])
-		position[min_idx] += int(orbit * period[min_idx])
-		if position[min_idx] == position[max_idx]:
+	while not in_sequence(offset):
+		min_idx = np.argmin(offset)
+		max_idx = np.argmax(offset)
+		orbit = np.ceil((offset[max_idx] - offset[min_idx]) / period[min_idx])
+		offset[min_idx] += int(orbit * period[min_idx])
+		if offset[min_idx] == offset[max_idx]:
 			period[max_idx] = np.lcm(period[min_idx], period[max_idx])
 			del period[min_idx]
-			del position[min_idx]
-	print(position)
-	return position
+			del offset[min_idx]
+	return offset[0]
 
 
 if __name__ == '__main__':
 	# Open File
-	with open('./test') as file:
+	with open('./input') as file:
 		raw = file.readlines()
 		data = [line.strip() for line in raw]
 
@@ -52,4 +57,4 @@ if __name__ == '__main__':
 	res_p1 = ft_part1(buses, arrival_time)
 	print("Part 1:", res_p1)
 	res_p2 = ft_part2(buses_all)
-	#print("Part 2:", res_p2)
+	print("Part 2:", res_p2)
